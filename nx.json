@@ -23,6 +23,9 @@
     },
     "core-data": {
       "tags": []
+    },
+    "core-state": {
+      "tags": []
     }
   }
 }
