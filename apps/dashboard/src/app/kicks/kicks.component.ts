@@ -3,6 +3,7 @@ import { Shoe, ShoesService } from '@mdv7/core-data';
 import { BehaviorSubject } from 'rxjs';
 import { DetailComponent } from './detail/detail.component';
 import { MatDialog } from '@angular/material';
+import { KicksFacade } from '@mdv7/core-state';
 
 @Component({
   selector: 'mdv7-kicks',
@@ -20,7 +21,8 @@ export class KicksComponent implements OnInit {
   showDetail = true;
 
   constructor(
-    private service: ShoesService
+    private service: ShoesService,
+    private facade: KicksFacade
   ) { }
 
   ngOnInit() {
@@ -42,6 +44,7 @@ export class KicksComponent implements OnInit {
 
   getShoes() {
     this.shoes$ = this.service.all();
+    this.facade.load();
   }
 
   selectShoe(shoe: Shoe) {

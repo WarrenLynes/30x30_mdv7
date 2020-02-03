@@ -1,22 +1,29 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Shoe, ShoesService } from '@mdv7/core-data';
+import { Component } from '@angular/core';
+import { Shoe } from '@mdv7/core-data';
+import { KicksFacade } from '@mdv7/core-state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mdv7-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
-
-  @Input() data: Shoe[];
-  @Input() selected: Shoe;
-  @Output() delete = new EventEmitter();
-  @Output() selectt = new EventEmitter();
-
-  constructor(private service: ShoesService) { }
-
-  ngOnInit() {
-
+export class ListComponent {
+  get data$() {
+    return this.facade.kicks$;
   }
 
+  constructor( private facade: KicksFacade, private router: Router ) {}
+
+  onDelete(entity: Shoe) {
+    // this.facade.delete(entity);
+  }
+
+  onSelect(entity: Shoe) {
+    this.facade.select(entity);
+    this.router.navigateByUrl(`/kicks/${entity.id}`)
+  }
+
+  onEdit(entity: Shoe) {
+  }
 }

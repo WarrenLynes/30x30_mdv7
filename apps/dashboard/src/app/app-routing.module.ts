@@ -14,9 +14,11 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'kicks', pathMatch: 'full' },
+  { path: '', component: DashboardComponent },
+  // { path: '', redirectTo: 'kicks', pathMatch: 'full' },
   { path: 'kicks', canActivate: [AuthGuard],  loadChildren: () => import('./kicks/kicks.module').then(m => m.KicksModule) },
   { path: 'login', component: LoginComponent },
   { path: 'lostnfound', component: NotFoundComponent },
@@ -24,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ AuthComponent, LoginComponent, NotFoundComponent ],
+  declarations: [ AuthComponent, DashboardComponent, LoginComponent, NotFoundComponent ],
   imports: [
     RouterModule.forRoot(routes),
     MatFormFieldModule,

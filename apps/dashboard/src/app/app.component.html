@@ -16,6 +16,7 @@
 
     <nav>
       <a mat-button *ngFor="let link of links"
+         (click)="sidenav.toggle();"
          [routerLink]="link.path" routerLinkActive="active">
         <!--        <mat-icon>{{link.icon}}</mat-icon>-->
         {{link.title}}

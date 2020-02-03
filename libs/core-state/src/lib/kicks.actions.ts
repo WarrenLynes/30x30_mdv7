@@ -14,3 +14,12 @@ export const loadFailure = createAction(
   '[KICKS][LOAD][FAILURE]',
   props<{ error: any }>()
 );
+
+export const select = createAction(
+  '[KICKS][SELECT]',
+  props<{ entity: Shoe }>()
+);
+
+export const reset = createAction(
+  '[KICKS][RESET]'
+);

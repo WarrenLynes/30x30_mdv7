@@ -30,6 +30,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.initialized$ = this.facade.initialized$;
     this.facade.initialize();
+
   }
 
   onLogout() {
